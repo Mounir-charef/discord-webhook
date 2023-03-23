@@ -21,7 +21,7 @@ app.post("/github", (req, res) => {
     console.log(req.body)
     action = req.body.action
     const content = `:wave: sup nigs! ${req.body.sender.login} just ${action} to/from ${req.body.repository.full_name}!`;
-    const avatarUrl = action === 'started' ? "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif" : "https://media.giphy.com/media/W0c3xcZ3F1d0EYYb0f/giphy.gif"
+    const avatarUrl = req.body.sender.avatar_url;
     axios
         .post(process.env.DISCORD_WEBHOOK_URL, {
             content: content,
